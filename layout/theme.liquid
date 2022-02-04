@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  {{ content_for_header }} <!-- Header hook for plugins -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {{ 'application.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+  {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
+  {{ 'bootstrap-select.min.css' | asset_url | stylesheet_tag }}
+  {{ 'custom-fonticons.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.theme.default.css' | asset_url | stylesheet_tag }}
+  {{ 'style.default.css' | asset_url | stylesheet_tag }}
+  {{ 'custom-stylesheet.css' | asset_url | stylesheet_tag }}
+
+</head>
+<body>
+  <header class="header">
+    {% render 'topbar' %}
+    {% render 'navbar' %}
+  </header>
+
+  {{ content_for_layout }}
+
+  <div id="scrollTop"><i class="fa fa-long-arrow-up"></i></div>
+
+  <footer class="main-footer">
+    {% render 'footer-services' %}
+    {% render 'footer-main' %}
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" integrity="sha512-5efjkDjhldlK+BrHauVYJpbjKrtNemLZksZWxd6Wdxvm06dceqWGLLNjZywOkvW7BF032ktHRMUOarbK9d60bg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js" integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  {{ 'jquery.min.js' | asset_url | script_tag }}
+  {{ 'bootstrap.bundle.min.js' | asset_url | script_tag }}
+  {{ 'jquery.cookie.js' | asset_url | script_tag }}
+  {{ 'owl.carousel.min.js' | asset_url | script_tag }}
+  {{ 'owl.carousel2.thumbs.min.js' | asset_url | script_tag }}
+  {{ 'bootstrap-select.min.js' | asset_url | script_tag }}
+  {{ 'front.js' | asset_url | script_tag }}
+  {{ 'application.js' | asset_url | script_tag }}
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+</body>
+</html>

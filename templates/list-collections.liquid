@@ -1,0 +1,28 @@
+<div class="page-container">
+<h1 class="page-heading-1">Collections</h1>
+{% for collection in collections %}
+  {% unless collection.handle == 'frontpage' %}
+    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+    <a 
+    class="brown-text-manrope mb-5 text-center"
+    href="{{ collection.url }}">View All {{ collection_title }} &rsaquo;</a>
+    {% assign grid_item_width = collection.products.size %}
+  <div class="collection-row">
+    {% for product in collection.products limit:3 %}
+      <div class="collection-item">
+        <a href="{{ product.url | within: collection }}">
+        {% if product.featured_image.src %}
+          <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+        {% endif %}
+        </a>
+        <a 
+        class="brown-text-manrope"
+        href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        {{ product.price | money }}
+        {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
+      </div>
+    {% endfor %}
+  </div>
+  {% endunless %}
+{% endfor %}
+</div>

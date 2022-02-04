@@ -1,0 +1,54 @@
+<!-- Alternatively make image height higher than parent element, parent, child (absolute and overflow hidden), child (the larger image, make this scroll slower) -->
+
+<div class="categories">
+  {% for product in section.blocks %}
+  {%- assign p = all_products[product.settings.product] -%}
+  {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+      <div style="" class="parallax-block">
+        <div 
+        style=""
+        {% if thecycle == 'even' %}class="order-1 plx-txt" {% else %} class="plx-txt" {% endif %}>
+          <div style="height: 10px;"></div>
+          <div 
+          class=" prod-img-new"
+          style="
+          background-image: url('{{p.featured_image | img_url: '400x600'}}')"
+          class="">    
+          </div>
+          <div style="" class="bottom-flex-new">
+            <h3><a href="{{p.url}}">{{p.title}}</a></h3>
+            <h4>{{p.price | money}}</h4>
+          </div>
+        </div>
+        <div
+        style=""
+        class="parallax-outer">
+          <div
+          style=""  
+          class="new-parallax"      
+          ></div>
+        </div>
+      </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Parallax Section",
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+

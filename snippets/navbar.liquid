@@ -1,0 +1,121 @@
+<div class="header-custom">
+    <div class="logo"></div>
+    <div class="worded-menu">
+        <div class="line-holder"><div class="menu-hover">  <a href="/">Home</a></div><div class="line"></div></div>
+        <div class="line-holder"><div class="menu-hover">  <a href="/collections">Collections</a></div><div class="line"></div></div>
+        <div class="line-holder"><div class="menu-hover">  <a href="/pages/contact">Contact</a></div><div class="line"></div></div>
+    </div>
+    <div class="menu-flex">
+        <button
+        style="outline: none;"
+        class="search">
+            <i class="fas fa-search"></i>
+        </button>
+        <div class="cart-mine">
+         
+          <div class="dropdown-mine show-mine">
+            <a class="dropdown-toggle">
+            <i class="icon-cart"></i>
+            <div class="cart-no">{{cart.items | size}}</div>
+            </a>
+
+          <div 
+          class="dropdown-menu-mine overwriteme">
+
+            <!-- cart item-->
+            {% for line_item in cart.items %}
+            <div class="cart-inner">
+
+                <div class="img">
+                  <img src="{{line_item.product.featured_image | img_url: '2048x'}}" alt="..." 
+                  style=""
+                  class="img-fluid--mine">
+                </div>
+            
+                  <div class="text">
+
+                      <a href="#">
+                      {{line_item.product.title | truncate: 35 }}
+                      </a>
+
+                    <small>Quantity: {{line_item.quantity}} </small><span class="price">{{line_item.product.price | money}} </span>
+                  </div>
+                  <a href="/cart/change?line={{forloop.index}}&quantity=0" class="delete"><i class="fa fa-trash-o"></i></a>
+            
+            </div>
+            {% endfor %}
+
+            <!-- total price-->
+            <div class="dropdown-item total-price d-flex justify-content-between">
+              <span class="total">Total</span>
+              <strong class="price">{{cart.total_price | money}}</strong>
+            </div>
+            <!-- call to actions-->
+            <div class="dropdown-item CTA d-flex">
+              <a href="/cart" class="btn btn-template wide">View Cart</a>
+
+              <form method="post" action="/cart">
+                <button type="submit" name="checkout" class="btn btn-template wide wide w-100">Checkout</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown-mine-mobile">
+          <a href="/cart" class="dropdown-toggle">
+            <i class="icon-cart"></i>
+            <div class="cart-no">{{cart.items | size}}</div>
+          </a>
+        </div>
+
+        </div>
+        <div class="navbar-custom">
+            <div></div> 
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<div class="menu-custom">
+  <div class="menu-inner">
+    <div class="menu-item">
+      <h2><a href="/">Home</a></h2>
+        <div class="snippet-holder">
+          <div class="snippet-img" style="background-image:url('//cdn.shopify.com/s/files/1/0552/9757/2947/collections/splash_400x250.jpg?v=1641038094')"></div>
+        </div>
+    </div>
+    <div class="menu-item">
+    {% assign serums = collections['serums'] %}
+    <h2><a href="{{serums.url}}">{{serums.title}}</a></h2>
+      <div class="snippet-holder left-200">
+        <div class="snippet-img" style="background-image:url('{{serums.image | img_url: '400x250' }}')"></div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <h2><a href="/pages/contact">Contact</a></h2> 
+        <div class="snippet-holder">
+          <div class="snippet-img" style="background-image:url('{{'7.jpg' | asset_img_url: '400x250' }}')"></div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="search-area">
+    <div class="search-area-inner d-flex align-items-center justify-content-center">
+      <div class="close-btn"><i class="icon-close"></i></div>
+      <form action="{{ routes.search_url }}">
+        <div class="form-group">
+          <input type="search" name="search" id="search" 
+          style="outline: none;"
+          value="{{ search.terms | escape }}"
+          placeholder="What are you looking for?">
+          <input type="hidden" name="type" value="product,page" />
+          <input type="hidden" name="options[unavailable_products]" value="hide" />
+          <input type="hidden" name="options[prefix]" value="last" />
+          <button 
+          style="outline: none;"
+          type="submit" class="submit"><i class="icon-search"></i></button>
+        </div>
+      </form>
+    </div>
+</div>

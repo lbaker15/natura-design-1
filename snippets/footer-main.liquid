@@ -1,0 +1,47 @@
+<div class="main-block">
+  <div class="container">
+    <div class="row">
+      <div class="info col-lg-4">
+        <div class="logo">
+          <h3>NATURA SKINCARE</h3>
+          {% if settings.footer_logo %}
+          <img src="{{settings.footer_logo | img_url: '2048x'}}" alt="...">
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- <div class="site-links col-lg-4 col-md-6">
+        <h5 class="text-uppercase">Company</h5>
+        <ul class="list-unstyled">
+          <li> <a href="#">Login</a></li>
+          <li> <a href="#">Register</a></li>
+          <li> <a href="#">Wishlist</a></li>
+          <li> <a href="#">Our Products</a></li>
+          <li> <a href="#">Checkouts</a></li>
+        </ul>
+      </div> -->
+      <div class="newsletter col-lg-8">
+        <h5 class="text-uppercase">{{settings.footer_newsletter_header}}</h5>
+        <p>{{settings.footer_newsletter_text}}</p>
+        <form action="#" id="newsletter-form">
+          <div class="form-group">
+            <input type="email" name="subscribermail" placeholder="Your Email Address">
+            <button type="submit"> <i class="fa fa-paper-plane"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="copyrights">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="text col-md-6">
+        <p>&copy; {{'now' | date: '%Y'}} <a href="/" target="_blank">{{shop.name}}</a> All rights reserved.</p>
+      </div>
+      <div class="payment col-md-6 clearfix">
+      </div>
+    </div>
+  </div>
+</div>
